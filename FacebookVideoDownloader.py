@@ -13,8 +13,8 @@ class FacebookVideoDownloader(Hoster):
     ]
 
     def init(self):
-        self.sd_url_pattern = r'sd_src:"([^"]+)"'
-        self.title_pattern = r'<title id="pageTitle">(.*)</title>'
+        self.sd_url_pattern = r'sd_src:"(.+?)"'
+        self.title_pattern = r'(?s)<title id="pageTitle">(.+?)</title>'
 
     def process(self, pyfile):
         html_source = self.load(pyfile.url, decode=False)
