@@ -8,11 +8,8 @@ import re
 class FacebookVideoDownloader(Hoster):
     __name__ = 'FacebookVideoDownloader'
     __version__ = '0.1'
-    __pattern__ = r'https://www.facebook.com/[^/]+/videos/([^/]+)'
-
-    __config__ = [
-        ('activated', 'bool', 'Activated', True)
-    ]
+    __status__ = 'testing'
+    __pattern__ = r'https://(?:www\.)?facebook\.com/[^/]+/videos/([^/]+)'
 
     def setup(self):
         try:
@@ -26,7 +23,7 @@ class FacebookVideoDownloader(Hoster):
             limit=5000000)
 
     def init(self):
-        self.sd_url_pattern = r'sd_src:"(.+?)"'
+        self.sd_url_pattern = r'sd_src:"([^"]+)"'
         self.title_pattern = r'(?s)<title id="pageTitle">(.+?)</title>'
 
     def process(self, pyfile):
